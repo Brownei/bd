@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Angel — The Birthday Tape</title>
+    <meta
+      name="description"
+      content="A personal broadcast tape for Angel's birthday."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- SEO / OpenGraph / Favicon -->
+    <link rel="icon" href="assets/recen.jpeg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="assets/recen.jpeg" />
+    <link rel="canonical" href="https://angel.topai.ng/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://angel.topai.ng/" />
+    <meta property="og:title" content="For Angel — The Birthday Tape" />
+    <meta
+      property="og:description"
+      content="A personal broadcast tape for Angel's birthday."
+    />
+    <meta
+      property="og:image"
+      content="https://angel.topai.ng/assets/recen.jpeg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="For Angel — The Birthday Tape" />
+    <meta
+      name="twitter:description"
+      content="A personal broadcast tape for Angel's birthday."
+    />
+    <meta
+      name="twitter:image"
+      content="https://angel.topai.ng/assets/recen.jpeg"
+    />
+  </head>
+  <body>
+    <div class="crt" aria-hidden="true"></div>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader" aria-hidden="true">
+      <div class="pre-osd pre-osd--tl">
+        <span class="rec-dot"></span>REC&nbsp;&nbsp;SP
+      </div>
+      <div class="pre-osd pre-osd--tr">
+        SP&nbsp;&nbsp;TRACK 00&nbsp;&nbsp;SL 0.0
+      </div>
+      <p class="pre-title">
+        <span class="pre-title__line">Happy</span> <em>Birthday</em>
+        <span class="pre-title__line">Angel</span>
+      </p>
+      <div class="pre-bottom">
+        <div class="pre-count">
+          <span id="preCount">000</span><span class="pre-pct">%</span>
+        </div>
+        <div class="pre-trackread">TRACKING&nbsp;&nbsp;∥·····∥</div>
+      </div>
+      <div class="pre-bar" aria-hidden="true"><i id="preBar"></i></div>
+      <div class="wipe wipe--a"></div>
+      <div class="wipe wipe--b"></div>
+    </div>
+
+    <!-- FIXED HUD -->
+    <header class="hud" aria-hidden="true">
+      <div class="hud__left">
+        <span class="rec-dot rec-dot--live"></span>REC&nbsp;&nbsp;<span
+          >THE ANGEL TAPES</span
+        >
+      </div>
+      <div class="hud__time">tc <span id="hudTime">00:00:00:00</span></div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="hero">
+        <div
+          class="hero-cards"
+          id="heroCards"
+          aria-label="A plastered collage of taped video stills"
+        >
+          <figure
+            class="still r--6 depth-2 tint-1"
+            data-photo="assets/baby.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 01</span><span>21:16:03</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="still r-4 depth-3 tint-4"
+            data-photo="assets/recen.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 02</span><span>14:40:57</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="still r--3 depth-1 tint-7"
+            data-photo="assets/2024-white-church.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 03</span><span>09:05:22</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="still r-7 depth-2 tint-2"
+            data-photo="assets/2024-cap.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 04</span><span>18:22:41</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="still r--7 depth-3 tint-5"
+            data-photo="assets/2024-red-hair.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 05</span><span>23:11:08</span>
+            </figcaption>
+          </figure>
+          <figure
+            class="still r-2 depth-1 tint-6"
+            data-photo="assets/2024-school.jpeg"
+          >
+            <div class="still-face"></div>
+            <img alt="" />
+            <figcaption class="stamp">
+              <span>PL 06</span><span>11:58:30</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <h1 class="hero-name" aria-label="Angel">
+          <span class="n"><span class="n__in">A</span></span>
+          <span class="n"><span class="n__in">N</span></span>
+          <span class="n ghost"><span class="n__in">G</span></span>
+          <span class="n"><span class="n__in">E</span></span>
+          <span class="n"><span class="n__in">L</span></span>
+        </h1>
+        <p class="hero-osd">
+          PERSONAL&nbsp;BROADCAST&nbsp;·&nbsp;SCROLL&nbsp;TO&nbsp;PLAY&nbsp;<span
+            class="play-chip"
+            >▶</span
+          >&nbsp;
+        </p>
+      </section>
+
+      <!-- YEAR REEL -->
+      <section class="reel" id="reel">
+        <aside class="rail">
+          <div class="rail-inner">
+            <div class="rail-cap">MEMORIES</div>
+            <div class="rail-year" aria-hidden="true">
+              <div class="rail-strip" id="railStrip">
+                <span>peak foolish</span>
+              </div>
+            </div>
+            <div class="rail-tc"><span id="railTc">00:00:00:00</span></div>
+            <div class="rail-line"><i id="railLine"></i></div>
+          </div>
+        </aside>
+
+        <div class="panels">
+          <article class="panel">
+            <div class="panel-photos side-r panel-photos--pile">
+              <figure
+                class="still pv pv-sm r-2 tint-4"
+                data-photo="assets/2024-cap.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 11</span><span>09:14:22</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-lg r--3 tint-6"
+                data-photo="assets/2024-face-mask.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 12</span><span>10:26:38</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-xs r-5 tint-1"
+                data-photo="assets/2024-mirror-1.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 13</span><span>12:31:09</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-sm r--5 tint-2"
+                data-photo="assets/2024-mirror-2.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 14</span><span>13:57:44</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-lg r-3 tint-7"
+                data-photo="assets/2024-white-church.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 15</span><span>16:05:17</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-xs r--2 tint-5"
+                data-photo="assets/2024-church.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 16</span><span>17:48:52</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-lg r--6 tint-9"
+                data-photo="assets/2024-red-hair.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 17</span><span>20:11:33</span>
+                </figcaption>
+              </figure>
+              <figure
+                class="still pv pv-sm r-4 tint-8"
+                data-photo="assets/2024-school.jpeg"
+              >
+                <div class="still-face"></div>
+                <img alt="" />
+                <figcaption class="stamp">
+                  <span>FA 18</span><span>21:04:15</span>
+                </figcaption>
+              </figure>
+            </div>
+            <p class="panel-note">
+              The archive of peak "foolish". This section is where every you
+              felt like a big deal.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- EPILOGUE -->
+      <section class="epilogue" id="epilogue">
+        <div class="epilogue-inner">
+          <p class="epi-line"><span>Happy birthday, Angel.</span></p>
+          <p class="epi-line">
+            <span
+              >Some people are chapters. You are the whole film who filled up my
+              gallery.</span
+            >
+          </p>
+          <p class="epi-line">
+            <span
+              >Every frame of this reel exists because you kept showing up in
+              the most stupid, dumb, sometimes bright and annoying kind.</span
+            >
+          </p>
+          <p class="epi-line"><span>Today the tape plays one message,</span></p>
+          <p class="epi-line">
+            <span>on repeat: I hate you not as much yet.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- SIGNATURE -->
+      <footer class="signoff" id="signoff">
+        <svg class="flourish" viewBox="0 0 120 60" aria-hidden="true">
+          <path
+            id="flourishPath"
+            d="M60 14 C 52 2, 36 6, 36 18 C 36 30, 52 36, 60 46 C 68 36, 84 30, 84 18 C 84 6, 68 2, 60 14 Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </svg>
+        <p class="signature">with hate in my chest, <em>Brownson</em></p>
+        <div class="signoff-osd">
+          <span class="rec-dot rec-dot--live"></span
+          >END&nbsp;OF&nbsp;TAPE&nbsp;&nbsp;·&nbsp;&nbsp;EJECT?
+        </div>
+        <button class="replay" id="replayBtn" type="button">
+          ↻&nbsp;REPLAY&nbsp;TAPE
+        </button>
+      </footer>
+    </main>
+
+    <!-- LIGHTBOX — frames called up full-screen -->
+    <div class="lightbox" id="lightbox" hidden>
+      <div class="lightbox-bg" id="lightboxBg"></div>
+      <div class="lightbox-stage" id="lightboxStage">
+        <figure class="lb-frame" id="lbFrame">
+          <img class="lb-img" id="lbImg" alt="" hidden />
+          <video
+            class="lb-video"
+            id="lbVideo"
+            muted
+            loop
+            playsinline
+            hidden
+          ></video>
+          <div class="lb-scan" aria-hidden="true"></div>
+        </figure>
+        <div class="lb-osd" aria-hidden="true">
+          <span id="lbLabel">PLAYBACK</span>
+          <span id="lbTc">LARGE&nbsp;FRAME</span>
+        </div>
+        <button class="lb-sound" id="lbSound" type="button" hidden>
+          ♪&nbsp;SOUND&nbsp;OFF
+        </button>
+        <button
+          class="lb-close"
+          id="lbClose"
+          type="button"
+          aria-label="Close playback"
+        >
+          ✕&nbsp;CLOSE
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

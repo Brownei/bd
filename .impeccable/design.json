@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-29T14:40:00Z",
+  "title": "Design System: For Angel — The Birthday Tape",
+  "extensions": {
+    "colorMeta": {
+      "ground": { "role": "neutral", "displayName": "Tape Ground", "canonical": "#08070a", "tonalRamp": ["#08070a", "#0c0a0e", "#100e12", "#14121a", "#1a1820", "#221f28", "#2b2733", "#353040"] },
+      "ground-raise": { "role": "neutral", "displayName": "Raised Tape", "canonical": "#100e12", "tonalRamp": ["#08070a", "#0e0c10", "#100e12", "#16141a", "#1c1a20", "#24222a", "#2d2a34", "#38343f"] },
+      "tape-warm": { "role": "neutral", "displayName": "Tape Warm White", "canonical": "#f2ece1", "tonalRamp": ["#211d19", "#3d3831", "#5a544b", "#7a7368", "#9c9488", "#bfb6a8", "#dcd3c5", "#f2ece1"] },
+      "tape-dim": { "role": "neutral", "displayName": "Tape Dim (ink at 56% on black)", "canonical": "rgba(242, 236, 225, 0.56)", "tonalRamp": ["#211d19", "#4a443c", "#6e675e", "#8a847a", "#9c968c", "#a8a298", "#b5afa5", "#c2bcb2"] },
+      "tape-faint": { "role": "neutral", "displayName": "Tape Faint (borders/hairlines)", "canonical": "rgba(242, 236, 225, 0.16)", "tonalRamp": ["#08070a", "#131117", "#191722", "#221f2a", "#2a2732", "#332f3b", "#3b3844", "#454150"] },
+      "signal-amber": { "role": "primary", "displayName": "Signal Amber", "canonical": "#ffb352", "tonalRamp": ["#4a2b0a", "#6e4210", "#935a18", "#b87220", "#d68a2e", "#eda03e", "#ffb352", "#ffd18f"] },
+      "rec-red": { "role": "secondary", "displayName": "Record Red", "canonical": "#e2402c", "tonalRamp": ["#3d0d07", "#5c1a10", "#5c1a10", "#7d2316", "#a02e1c", "#c13623", "#e2402c", "#f28072"] },
+      "chroma-cyan": { "role": "tertiary", "displayName": "Chroma Cyan (ghost only)", "canonical": "#57d6c8", "tonalRamp": ["#0d3330", "#144640", "#144640", "#1c5c55", "#2b756c", "#3d9b8f", "#57d6c8", "#a5ece2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Serif Voice", "purpose": "The name, epilogue, signature — every remembered word. Italic + amber at emotional peaks." },
+      "body": { "displayName": "Sans Body", "purpose": "Sparse connective copy; most text lives in OSD or serif." },
+      "osd": { "displayName": "VCR OSD", "purpose": "All machine measurement: timecodes, tracks, counts, stamps, eject chrome." }
+    },
+    "shadows": [
+      { "name": "frame-float", "value": "0 14px 34px rgba(0,0,0,0.55), 0 3px 8px rgba(0,0,0,0.4)", "purpose": "Resting lift under every still card so plastered frames read as taped objects." },
+      { "name": "frame-lift", "value": "0 26px 48px rgba(0,0,0,0.6), 0 6px 14px rgba(0,0,0,0.5)", "purpose": "Hover response only — the card comes off the wall." },
+      { "name": "rec-glow", "value": "0 0 10px rgba(226,64,44,0.7)", "purpose": "Emission from the record dot." },
+      { "name": "tape-glow", "value": "0 0 14px rgba(255,179,82,0.45)", "purpose": "Emission from amber progress bars." }
+    ],
+    "motion": [
+      { "name": "entrance-expo", "value": "expo.out, 1.0–1.15s, stagger 0.085–0.15", "purpose": "Reveal vocabulary for letters, cards, epilogue lines." },
+      { "name": "transport-scrub", "value": "gsap ScrollTrigger scrub (none→0.4 smoothing)", "purpose": "Parallax, video frame scale, hairline fill — scroll IS the tape transport." },
+      { "name": "count-power2", "value": "power2.inOut tween on a counter object", "purpose": "Preloader 0→100 and year-roll counters." },
+      { "name": "replaster-pair", "value": "power2.in 0.5s down / power3.out 0.8s return, tilt ±9°", "purpose": "Collage shuffler beat every 1.7s — hero collage fades and re-plasters." },
+      { "name": "reduced-motion", "value": "matchMedia(prefers-reduced-motion: reduce) → static page, JS skips handlers", "purpose": "Accessibility floor." },
+      { "name": "no-motion-fallback", "value": "html.no-motion + CSS statics when GSAP CDN unavailable", "purpose": "Resilience floor." }
+    ],
+    "breakpoints": [
+      { "name": "mobile-reel", "value": "900px" },
+      { "name": "compact", "value": "480px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Frame Still Card",
+      "kind": "card",
+      "refersTo": "frame-still",
+      "description": "A taped video still: rounded floating frame with tinted SIGNAL LOST plate (or real photo/video), OSD stamp, tilt vocabulary.",
+      "html": "<figure class=\"ds-still\" style=\"--ds-tilt:-4deg\"><div class=\"ds-face\"></div><figcaption class=\"ds-stamp\"><span>PL 01</span><span>21:16:03</span></figcaption></figure>",
+      "css": ".ds-still { position: relative; width: 260px; aspect-ratio: 4/3; border-radius: 12px; background: #100e12; border: 1px solid rgba(242,236,225,0.07); box-shadow: 0 14px 34px rgba(0,0,0,0.55), 0 3px 8px rgba(0,0,0,0.4); overflow: hidden; transform: rotate(var(--ds-tilt, 0)); transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease; font-family: 'Instrument Sans', sans-serif; } .ds-still:hover { transform: rotate(0) translateY(-6px) scale(1.02); box-shadow: 0 26px 48px rgba(0,0,0,0.6), 0 6px 14px rgba(0,0,0,0.5); } .ds-face { position: absolute; inset: 0; background: radial-gradient(85% 70% at 30% 25%, #3d2c1a 0%, #17131a 70%), #17131a; } .ds-face::after { content: \"SIGNAL LOST\"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'VT323', monospace; font-size: 15px; letter-spacing: .14em; color: rgba(242,236,225,.5); } .ds-stamp { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; padding: .45em .7em; font-family: 'VT323', monospace; font-size: 14px; letter-spacing: .05em; color: rgba(242,236,225,.56); background: linear-gradient(to top, rgba(8,7,10,.78), transparent); }"
+    },
+    {
+      "name": "Replay Button",
+      "kind": "button",
+      "refersTo": "replay-button",
+      "description": "Ghost OSD button in VCR chrome; amber fill on hover/focus, flips ink to ground.",
+      "html": "<button class=\"ds-replay\">↻ REPLAY TAPE</button>",
+      "css": ".ds-replay { font-family: 'VT323', monospace; font-size: 19px; letter-spacing: .12em; color: #f2ece1; background: transparent; border: 1px solid rgba(242,236,225,.22); border-radius: 8px; padding: .7em 1.5em; cursor: pointer; transition: background .25s ease, color .25s ease, border-color .25s ease; } .ds-replay:hover, .ds-replay:focus-visible { background: #ffb352; border-color: #ffb352; color: #08070a; outline: none; box-shadow: 0 0 0 2px #08070a; }"
+    },
+    {
+      "name": "OSD Stamp Label",
+      "kind": "chip",
+      "refersTo": "frame-still",
+      "description": "Machine measurement label: frame code + timecode on a gradient scrim.",
+      "html": "<span class=\"ds-osd\"><i class=\"ds-dot\"></i>REC&nbsp;&nbsp;SP</span>",
+      "css": ".ds-osd { display: inline-flex; align-items: center; font-family: 'VT323', monospace; font-size: 18px; letter-spacing: .06em; color: rgba(242,236,225,.56); white-space: nowrap; } .ds-dot { width: .62em; height: .62em; border-radius: 50%; background: #e2402c; box-shadow: 0 0 10px rgba(226,64,44,.7); margin-right: .45em; animation: ds-blink 1.4s steps(1) infinite; } @keyframes ds-blink { 0%,55% { opacity: 1; } 56%,100% { opacity: .15; } }"
+    },
+    {
+      "name": "Transport Rail Year",
+      "kind": "custom",
+      "refersTo": "frame-still",
+      "description": "Rolling year counter in Signal Amber with chroma ghosting — the page's signature machine element.",
+      "html": "<div class=\"ds-railyear\"><span class=\"ds-strip\"><span>2019</span><span>2020</span></span></div>",
+      "css": ".ds-railyear { overflow: hidden; height: 6rem; } .ds-strip { display: block; font-family: 'VT323', monospace; font-size: 6rem; line-height: 1.02; color: #ffb352; text-shadow: 3px 0 0 rgba(87,214,200,.18), -3px 0 0 rgba(226,64,44,.18); } .ds-strip span { display: block; height: 1em; }"
+    },
+    {
+      "name": "Tape Progress Hairline",
+      "kind": "custom",
+      "refersTo": "frame-still",
+      "description": "Faint track + amber emission fill; the tape passing the head.",
+      "html": "<div class=\"ds-track\"><i class=\"ds-fill\" style=\"transform: scaleX(.62)\"></i></div>",
+      "css": ".ds-track { width: 180px; height: 2px; background: rgba(242,236,225,.14); border-radius: 2px; overflow: hidden; } .ds-fill { display: block; height: 100%; background: #ffb352; box-shadow: 0 0 14px rgba(255,179,82,.45); transform-origin: left; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "A recovered home-video tape playing on a CRT that still remembers.",
+    "overview": "The page is one continuous broadcast on black: the visitor scrubs through someone's memories the way you fast-forward a VHS. Depth is layered darkness plus soft structural shadow on floating frame cards. The human voice (Instrument Serif, cream, italic at emotional beats) lives inside machine chrome (VT323 timecodes, track counters, REC lights) — emotion arrives as evidence, not decoration.",
+    "keyCharacteristics": [
+      "Pitch-black ground everywhere; amber is the single accent, only where the tape machine lights up.",
+      "OSD chrome is a design material: REC dots, timecodes, TRACK counters, PLAY chips are measurement, not decoration.",
+      "Photos are video stills: 12px rounded frame cards, hand-plastered tilts, stamped frame codes.",
+      "Ghosting artifacts (cyan/red pairs) belong to the CRT subject, on serif display type only.",
+      "Scroll is a tape transport: scrubbed parallax, rolling year, live timecode, hairline progress."
+    ],
+    "rules": [
+      { "name": "The Machine-Light Rule", "body": "Amber appears at ≤10% of any screen and always where the tape machine itself lights up (counters, progress, record-adjacent beats). Its rarity is what makes it read as light.", "section": "colors" },
+      { "name": "The Measurement-Not-Decoration Rule", "body": "VT323 exists only for things the machine measures. A feeling is never set in VT323; a measurement is never set in Instrument Serif.", "section": "typography" },
+      { "name": "The Chroma-Pair Rule", "body": "Cyan and red ghosting shadows travel together, ±2–3px horizontal offsets on serif display type, opacity ≤0.28. They never tint fills or borders.", "section": "colors" },
+      { "name": "The Serif-Carries-Sentiment Rule", "body": "Italic + amber marks exactly the sentimental peaks. Never italicize OSD chrome.", "section": "typography" },
+      { "name": "The Dark-By-Default Rule", "body": "Surfaces are flat ground until an element is a physical object (a frame card) or a light source (dot, bar). Glow is emission, not decoration.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep 100% black ground commitment — this world is drenched-dark.",
+      "Do pair every counter with tabular VT323 digits and keep them rolling.",
+      "Do stamp every frame card with its frame label + timecode.",
+      "Do honor prefers-reduced-motion and the no-GSAP static fallback."
+    ],
+    "donts": [
+      "Don't put emotion in VT323 or measurement in Instrument Serif.",
+      "Don't use amber beyond the ≤10% machine-light band.",
+      "Don't draw flat shadowed cards, colored side borders, or rectangle stand-ins for content.",
+      "Don't place red or cyan anywhere except the REC dot, its glow, and paired ghosting shadows.",
+      "Don't fake imagery: an unfilled frame stays SIGNAL LOST."
+    ]
+  }
+}

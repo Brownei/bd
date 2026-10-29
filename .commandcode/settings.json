@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(/home/brownson/.commandcode/skills/impeccable/scripts/impeccable:*)",
+      "Shell(python3 -m http.server 8423 --bind 127.0.0.1)",
+      "Shell(agent-browser:*)",
+      "Shell(curl -sI --max-time 8 https://registry.npmjs.org/ | head -n 1; which chromium chromium-browser google-chrome 2>/dev/null; echo \"---\"; curl -sI --max-time 8 https://fonts.googleapis.com | head -n 1)",
+      "Shell(npm:*)",
+      "Shell(ls ~/.agent-browser 2>/dev/null; ls ~/.cache/agent-browser 2>/dev/null; find ~ -maxdepth 4 -iname \"*chrome*\" -newer /tmp -type d 2>/dev/null | head; agent-browser install --help 2>&1 | head -n 30)",
+      "Shell(NB=$(npm root -g)/agent-browser; ls $NB; cat $NB/scripts/postinstall.js 2>/dev/null | head -n 60)",
+      "Shell(NB=$(npm root -g)/agent-browser; grep -rn \"chrome-for-testing\\|chromePath\\|browserPath\\|\\.cache\" $NB/cli $NB/bin 2>/dev/null | grep -i -E \"cache|chrome\" | head -n 12; ls $NB/bin $NB/cli 2>/dev/null | head)",
+      "Shell(B=$(npm root -g)/agent-browser/bin/agent-browser-linux-x64; strings $B 2>/dev/null | grep -i -E \"chrome-for-testing|\\.cache/[a-z-]+|browserPath|chromePath\" | head -n 15)",
+      "Shell(curl -sL --max-time 20 -r 0-2000000 -o /tmp/probe.zip -w \"%{speed_download} bytes/s, %{http_code}\\n\" https://storage.googleapis.com/chrome-for-testing-public/156.0.8078.73/linux64/chrome-linux64.zip)",
+      "Shell(for i in 1 2 3 4 5 6 7 8; do curl -sL -C - --max-time 120 -o /tmp/chrome-linux64.zip https://storage.googleapis.com/chrome-for-testing-public/156.0.8078.73/linux64/chrome-linux64.zip && break; done; ls -la /tmp/chrome-linux64.zip; s=$(stat -c%s /tmp/chrome-linux64.zip); [ \"$s\" -gt 190000000 ] && echo COMPLETE || echo INCOMPLETE)",
+      "Shell(ls -la /tmp/chrome-linux64.zip 2>/dev/null; stat -c \"size: %s\" /tmp/chrome-linux64.zip 2>/dev/null)",
+      "Shell(mkdir:*)",
+      "Shell(unzip:*)",
+      "Shell(~/.cache/puppeteer/chrome/linux-156.0.8078.73/chrome-linux64/chrome:*)",
+      "Shell(python3 -c import zipfile; zipfile.ZipFile('/tmp/chrome-linux64.zip').extractall('.'))",
+      "Shell(chmod:*)",
+      "Shell(chrome-linux64/chrome:*)",
+      "Shell(agent-browser status 2>&1; agent-browser close 2>&1 | head -n 3)",
+      "Shell(agent-browser close 2>/dev/null; ~/.cache/puppeteer/chrome/linux-156.0.8078.73/chrome-linux64/chrome --headless=new --no-sandbox --disable-gpu --dump-dom about:blank 2>&1 | head -n 8)",
+      "Shell(~/.cache/puppeteer/chrome/linux-156.0.8078.73/chrome-linux64/chrome --headless=new --no-sandbox --disable-gpu --dump-dom about:blank 2>/dev/null; echo \"exit=$?\")",
+      "Shell(sleep:*)",
+      "Shell(cp:*)",
+      "Shell(agent-browser skills get core --full 2>&1 | grep -n -E \"^```bash|^(##|###)\" | head -n 60)",
+      "Shell(agent-browser skills get core --full > /tmp/ab-core.md 2>&1; grep -n -E 'agent-browser [a-z]+ ' /tmp/ab-core.md | grep -v -E \"open|snapshot|click|fill|type\" | head -n 60)",
+      "Shell(export:*)",
+      "Shell(export AGENT_BROWSER_SESSION=angel-qa; agent-browser eval \"location.reload(true)\" >/dev/null 2>&1; kill_shell on the old server not needed; python - <<'EOF' print('noop') EOF echo done)",
+      "Shell(python3 -m http.server 8424 --bind 127.0.0.1)",
+      "Shell(export AGENT_BROWSER_SESSION=angel-qa; agent-browser open http://127.0.0.1:8424/ >/dev/null 2>&1; agent-browser screenshot /tmp/pre-mid.png 2>&1 | tail -n 1 && agent-browser wait 1000 && agent-browser screenshot /tmp/pre-late.png 2>&1 | tail -n 1)",
+      "Shell(export AGENT_BROWSER_SESSION=angel-qa; agent-browser wait 3600; for i in 1 2 3 4 5 6 7 8 9 10 11 12; do agent-browser scroll down 900 >/dev/null 2>&1; done; agent-browser wait 1600 && agent-browser screenshot /tmp/full-final.png 2>&1 | tail -n 1 && cp /tmp/full-final.png .impeccable/review/desktop-full.png && cp /tmp/qa6-hero.png .impeccable/review/desktop.png && cp /tmp/qam2-hero.png .impeccable/review/mobile.png && cp /tmp/qam3-video.png .impeccable/review/mobile-video.png && cp /tmp/pre-late.png .impeccable/review/desktop-preloader.png && ls .impeccable/review/)",
+      "Shell(python3 -c \"import json; json.load(open('/home/brownson/work/tsx/angel/.impeccable/design.json')); print('design.json valid')\" && agent-browser close 2>/dev/null; echo \"browser closed\")",
+      "Shell(export AGENT_BROWSER_SESSION=angel-qa; agent-browser close >/dev/null 2>&1; agent-browser open http://127.0.0.1:8424/ && agent-browser wait 5200 && cat <<'EOF' | agent-browser eval --stdin (() => { // swap the first hero frame's source for a real (test) image so the click path runs for real const img = document.querySelector('.hero-cards .still img'); const c = document.createElement('canvas'); c.width = 400; c.height = 480; const x = c.getContext('2d'); const g = x.createLinearGradient(0, 0, 400, 480); g.addColorStop(0, '#6e4212'); g.addColorStop(0.5, '#8a6a30'); g.addColorStop(1, '#241a24'); x.fillStyle = g; x.fillRect(0, 0, 400, 480); x.fillStyle = 'rgba(242,236,225,.9)'; x.font = '40px serif'; x.fillText('TEST FRAME', 90, 250); img.src = c.toDataURL(); return 'swapped'; })() EOF agent-browser wait 800 && cat <<'EOF' | agent-browser eval --stdin (() => { document.querySelector('.hero-cards .still').scrollIntoView({block:'center'}); window.scrollBy(0, -120); return 'ready'; })() EOF agent-browser wait 1600 && cat <<'EOF' | agent-browser eval --stdin (() => { document.querySelector('.hero-cards .still').click(); return 'clicked'; })() EOF agent-browser wait 1200 && agent-browser screenshot /tmp/lb-open.png 2>&1 | tail -n 1)"
+    ],
+    "deny": [],
+    "defaultMode": "default"
+  }
+}
